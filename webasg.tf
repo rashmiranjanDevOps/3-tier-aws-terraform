@@ -14,7 +14,7 @@ resource "aws_autoscaling_group" "swiggy-web-asg" {
 ###### Create a Launch Template for the EC2 instances ######
 resource "aws_launch_template" "swiggy-web-template" {
   name_prefix   = "swiggy-web-template"
-  image_id      = "ami-0d176f79571d18a8f"
+  image_id      = "ami-0a734ede9890e57f5"
   instance_type = "t3.small"
 
   network_interfaces {
@@ -22,8 +22,4 @@ resource "aws_launch_template" "swiggy-web-template" {
     security_groups             = [aws_security_group.swiggy-ec2-asg-sg.id]
   }
   user_data = base64encode(file("apache.sh"))
-  lifecycle {
-    prevent_destroy = false
-    ignore_changes  = all
-  }
 }
