@@ -20,7 +20,7 @@ resource "aws_autoscaling_group" "swiggy-app-asg" {
 # Create a launch template for the EC2 instances
 resource "aws_launch_template" "swiggy-app-template" {
   name_prefix   = "swiggy-app-template"
-  image_id      = "ami-0d176f79571d18a8f"
+  image_id      = "ami-0a734ede9890e57f5"
   instance_type = "t3.small"
 
   network_interfaces {
@@ -34,10 +34,5 @@ resource "aws_launch_template" "swiggy-app-template" {
     sudo yum install mysql -y
   EOF
   )
-
-  lifecycle {
-    prevent_destroy = false
-    ignore_changes  = all
-  }
 }
 
